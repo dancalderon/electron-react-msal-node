@@ -14,6 +14,7 @@ const AuthProvider = require('./AuthProvider');
 
 const authProvider = new AuthProvider();
 let mainWindow;
+const isProd = process.env.NODE_ENV === 'production';
 
 function createWindow () {
     mainWindow = new BrowserWindow({
@@ -22,10 +23,19 @@ function createWindow () {
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
+        preload: __dirname + '/preload.js',
       }
     })
 
-    mainWindow.loadFile(path.join(__dirname, './index.html'));
+
+    if (!isProd) {
+        console.log('loading prod url');
+        mainWindow.loadURL('http://localhost:3000');
+        mainWindow.webContents.openDevTools();
+    } else {
+        mainWindow.loadFile(path.join(__dirname, './index.html'));
+    }
+    
   }
 
 app.on('ready', () => {
