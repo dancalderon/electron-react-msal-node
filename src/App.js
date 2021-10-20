@@ -1,0 +1,26 @@
+
+const { IPC_MESSAGES } = require('./constants');
+import * as electron from 'electron' //TODO
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <button type="button" onClick={() => {
+  console.log("🚀 ~ file: renderer.js ~ line 11 ~ document.querySelector ~ signIn")
+    electron.ipcRenderer.send(IPC_MESSAGES.LOGIN);
+}}>log in button</button>
+      </header>
+    </div>
+  );
+}
+
+export default App;

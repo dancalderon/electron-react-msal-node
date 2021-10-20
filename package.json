@@ -1,0 +1,54 @@
+{
+  "name": "electron-test-app",
+  "version": "1.0.0",
+  "description": "A sample Electron application that uses msal-node to acquire tokens",
+  "main": "./public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "wait-on tcp:3000 && electron .",
+    "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js"
+  },
+  "keywords": [
+    "msal-node",
+    "electron",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "electron": "^15.2.0",
+    "electron-builder": "^22.11.7",
+    "electron-devtools-installer": "^3.2.0",
+    "electronmon": "^2.0.1",
+    "wait-on": "^6.0.0"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^1.0.0",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
