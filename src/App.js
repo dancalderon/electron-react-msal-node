@@ -1,6 +1,6 @@
 
 const { IPC_MESSAGES } = require('./constants');
-import * as electron from 'electron' //TODO
+// const { ipcRenderer } = require('electron');
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         </a>
         <button type="button" onClick={() => {
   console.log("🚀 ~ file: renderer.js ~ line 11 ~ document.querySelector ~ signIn")
-    electron.ipcRenderer.send(IPC_MESSAGES.LOGIN);
+    window.ipcRenderer.send(IPC_MESSAGES.LOGIN);
 }}>log in button</button>
       </header>
     </div>
